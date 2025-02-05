@@ -73,13 +73,15 @@
             font-size: 6em; /* MUCHÍSIMO más grande */
             text-align: center;
             max-width: 90%;
+            z-index: 10; /* Para que los iconos no lo tapen */
         }
 
         .icono {
             position: absolute;
-            font-size: 2.5em;
+            font-size: 3em;
             transition: transform 0.3s ease;
             animation: flotar 5s infinite alternate ease-in-out;
+            z-index: 5; /* Para que queden detrás del texto */
         }
 
         .icono:hover {
@@ -148,7 +150,7 @@
     </div>
 
     <div id="view6" class="container hidden">
-        <h1>Y por todo eso, <br> quiero decirte algo muy especial...</h1>
+        <h1>Y por todo eso, <br> quiero decirte que...</h1>
         <button onclick="nextView(7)">Presióname</button>
     </div>
 
@@ -160,7 +162,7 @@
             const iconos = ["❤️", "💖", "💘", "💞", "💕", "💓", "💌", "💚"]; // Se agregan corazones verdes y más colores
             
             function crearIconos() {
-                for (let i = 0; i < 15; i++) { // Se generan 15 íconos
+                for (let i = 0; i < 25; i++) { // Ahora hay 25 iconos flotantes alrededor de la pantalla
                     let icono = document.createElement("span");
                     icono.className = "icono";
                     icono.innerHTML = iconos[Math.floor(Math.random() * iconos.length)];
