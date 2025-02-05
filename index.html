@@ -20,21 +20,23 @@
         }
 
         h1 {
-            font-size: 2.8em;
+            font-size: 2em;
             text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
             margin: 20px;
+            padding: 0 15px;
             white-space: nowrap; /* Mantiene el texto en una sola línea */
         }
 
         button {
             background-color: #ff4e60;
             border: none;
-            padding: 15px 30px;
+            padding: 12px 25px;
             color: white;
-            font-size: 1.2em;
+            font-size: 1em;
             cursor: pointer;
             border-radius: 30px;
             transition: background-color 0.3s ease;
+            margin-top: 10px;
         }
 
         button:hover {
@@ -67,13 +69,13 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            font-size: 3.5em;
+            font-size: 2.5em;
             white-space: nowrap; /* Evita saltos de línea */
         }
 
         .icono {
             position: absolute;
-            font-size: 2.5em;
+            font-size: 2em;
             transition: transform 0.3s ease;
             animation: flotar 5s infinite alternate ease-in-out;
         }
@@ -90,13 +92,30 @@
         .heart {
             position: absolute;
             bottom: 0;
-            font-size: 2em;
+            font-size: 1.5em;
             animation: floatUp 5s linear infinite;
         }
 
         @keyframes floatUp {
             0% { transform: translateY(0); opacity: 1; }
             100% { transform: translateY(-100vh); opacity: 0; }
+        }
+
+        /* Adaptación para móviles */
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 1.8em;
+                padding: 0 10px;
+            }
+
+            button {
+                padding: 10px 20px;
+                font-size: 0.9em;
+            }
+
+            #view7 h1 {
+                font-size: 2em;
+            }
         }
     </style>
 </head>
@@ -129,7 +148,7 @@
 
     <div id="view6" class="container hidden">
         <h1>Por eso quiero decirte con todo mi corazón que...</h1>
-        <button onclick="nextView(7)">Ver mensaje final</button>
+        <button onclick="nextView(7)">Presióname</button>
     </div>
 
     <div id="view7" class="container hidden">
@@ -137,7 +156,7 @@
 
         <!-- Íconos flotantes en la última vista -->
         <script>
-            const iconos = ["❤️", "💖", "💘", "💞", "💕", "💓", "💌", "💚"]; // Se agregan corazones verdes y se quitan íconos de parejas
+            const iconos = ["❤️", "💖", "💘", "💞", "💕", "💓", "💌", "💚"]; // Corazones verdes y más colores
             
             function crearIconos() {
                 for (let i = 0; i < 15; i++) { // Se generan 15 íconos
