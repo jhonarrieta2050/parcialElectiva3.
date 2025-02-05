@@ -7,90 +7,87 @@
     <style>
         body {
             background: linear-gradient(45deg, #ff758c, #ff7eb3);
-            text-align: center;
             font-family: 'Arial', sans-serif;
             color: white;
-            margin: 0;
-            height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
+            height: 100vh;
+            margin: 0;
             flex-direction: column;
+            text-align: center;
             overflow: hidden;
-            position: relative;
         }
 
         h1 {
-            font-size: 4em;
+            font-size: 3em;
             text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
-            position: relative;
-            z-index: 10;
+            margin: 20px;
         }
 
-        .icono {
-            position: absolute;
-            font-size: 2.5em;
-            transition: transform 0.3s ease;
-            animation: flotar 5s infinite alternate ease-in-out;
+        button {
+            background-color: #ff4e60;
+            border: none;
+            padding: 15px 30px;
+            color: white;
+            font-size: 1.2em;
+            cursor: pointer;
+            border-radius: 30px;
+            transition: background-color 0.3s ease;
         }
 
-        .icono:hover {
-            transform: scale(1.3);
+        button:hover {
+            background-color: #ff758c;
         }
 
-        @keyframes flotar {
-            from { transform: translateY(0); }
-            to { transform: translateY(-20px); }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
-        .heart {
-            position: absolute;
-            bottom: 0;
-            font-size: 2em;
-            color: red;
-            animation: floatUp 5s linear infinite;
+        .container button {
+            margin: 20px;
         }
 
-        @keyframes floatUp {
-            0% { transform: translateY(0); opacity: 1; }
-            100% { transform: translateY(-100vh); opacity: 0; }
+        .hidden {
+            display: none;
         }
     </style>
 </head>
 <body>
 
-    <h1>Te Amo Claudia 💖</h1>
+    <div id="view1" class="container">
+        <h1>Hey, tú linda</h1>
+        <button onclick="nextView(2)">Presióname</button>
+    </div>
+
+    <div id="view2" class="container hidden">
+        <h1>¡Sí, tú! La hermosura que está leyendo esto</h1>
+        <button onclick="nextView(3)">Siguiente</button>
+    </div>
+
+    <div id="view3" class="container hidden">
+        <h1>Eres una gran mujer, una mujer hermosa y muy especial para mí, y por eso te quiero decir que...</h1>
+        <button onclick="nextView(4)">Te Amo</button>
+    </div>
+
+    <div id="view4" class="container hidden">
+        <h1>Te Amo Claudia 💖</h1>
+    </div>
 
     <script>
-        const iconos = ["❤️", "💖", "💘", "💞", "💕", "💓", "💌", "💑", "💍", "🌹", "🇩🇪"];
-        
-        function crearIconos() {
-            for (let i = 0; i < 15; i++) { // Se generan 15 íconos
-                let icono = document.createElement("span");
-                icono.className = "icono";
-                icono.innerHTML = iconos[Math.floor(Math.random() * iconos.length)];
-                icono.style.left = Math.random() * 100 + "vw";
-                icono.style.top = Math.random() * 100 + "vh";
-                icono.style.animationDuration = (Math.random() * 2 + 3) + "s";
-                document.body.appendChild(icono);
+        function nextView(viewNumber) {
+            // Ocultamos todas las vistas
+            for (let i = 1; i <= 4; i++) {
+                document.getElementById(`view${i}`).classList.add('hidden');
             }
+            // Mostramos la vista correspondiente
+            document.getElementById(`view${viewNumber}`).classList.remove('hidden');
         }
 
-        function createHeart() {
-            const heart = document.createElement("div");
-            heart.className = "heart";
-            heart.innerHTML = "❤️";
-            heart.style.left = Math.random() * 100 + "vw";
-            heart.style.animationDuration = Math.random() * 2 + 3 + "s";
-            document.body.appendChild(heart);
-
-            setTimeout(() => {
-                heart.remove();
-            }, 5000);
-        }
-
-        crearIconos();
-        setInterval(createHeart, 500);
+        // Iniciar mostrando la primera vista
+        nextView(1);
     </script>
 
 </body>
