@@ -59,9 +59,41 @@
             color: black;
         }
 
-        /* Estilo para la última vista con gradiente */
+        /* Estilo para la última vista con fondo rosa y los efectos */
         #view4 {
-            background: linear-gradient(45deg, #ff758c, #ff7eb3);
+            background-color: #ff7eb3;  /* Fondo completamente rosa */
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .icono {
+            position: absolute;
+            font-size: 2.5em;
+            transition: transform 0.3s ease;
+            animation: flotar 5s infinite alternate ease-in-out;
+        }
+
+        .icono:hover {
+            transform: scale(1.3);
+        }
+
+        @keyframes flotar {
+            from { transform: translateY(0); }
+            to { transform: translateY(-20px); }
+        }
+
+        .heart {
+            position: absolute;
+            bottom: 0;
+            font-size: 2em;
+            color: red;
+            animation: floatUp 5s linear infinite;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(0); opacity: 1; }
+            100% { transform: translateY(-100vh); opacity: 0; }
         }
     </style>
 </head>
@@ -84,6 +116,39 @@
 
     <div id="view4" class="container hidden">
         <h1>Te Amo Claudia 💖</h1>
+
+        <!-- Íconos flotantes en la última vista -->
+        <script>
+            const iconos = ["❤️", "💖", "💘", "💞", "💕", "💓", "💌", "💑", "🌹"];
+            
+            function crearIconos() {
+                for (let i = 0; i < 15; i++) { // Se generan 15 íconos
+                    let icono = document.createElement("span");
+                    icono.className = "icono";
+                    icono.innerHTML = iconos[Math.floor(Math.random() * iconos.length)];
+                    icono.style.left = Math.random() * 100 + "vw";
+                    icono.style.top = Math.random() * 100 + "vh";
+                    icono.style.animationDuration = (Math.random() * 2 + 3) + "s";
+                    document.getElementById("view4").appendChild(icono);
+                }
+            }
+
+            function createHeart() {
+                const heart = document.createElement("div");
+                heart.className = "heart";
+                heart.innerHTML = "❤️";
+                heart.style.left = Math.random() * 100 + "vw";
+                heart.style.animationDuration = Math.random() * 2 + 3 + "s";
+                document.getElementById("view4").appendChild(heart);
+
+                setTimeout(() => {
+                    heart.remove();
+                }, 5000);
+            }
+
+            crearIconos();
+            setInterval(createHeart, 500);
+        </script>
     </div>
 
     <script>
