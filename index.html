@@ -44,10 +44,9 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-        }
-
-        .container button {
-            margin: 20px;
+            justify-content: center;
+            width: 100%;
+            height: 100vh;
         }
 
         .hidden {
@@ -60,6 +59,15 @@
             overflow: hidden;
             height: 100vh;
             width: 100%;
+        }
+
+        /* Centrar el texto de la última vista */
+        #view4 h1 {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 3.5em;
         }
 
         .icono {
@@ -82,7 +90,6 @@
             position: absolute;
             bottom: 0;
             font-size: 2em;
-            color: red;
             animation: floatUp 5s linear infinite;
         }
 
@@ -114,7 +121,7 @@
 
         <!-- Íconos flotantes en la última vista -->
         <script>
-            const iconos = ["❤️", "💖", "💘", "💞", "💕", "💓", "💌", "💑", "🌹"];
+            const iconos = ["❤️", "💖", "💘", "💞", "💕", "💓", "💌", "💚"]; // Se agregan corazones verdes y se quitan íconos de parejas
             
             function crearIconos() {
                 for (let i = 0; i < 15; i++) { // Se generan 15 íconos
