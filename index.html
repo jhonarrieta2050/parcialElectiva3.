@@ -23,24 +23,24 @@
         h1 {
             font-size: 4em;
             text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
-        }
-
-        .decoraciones {
-            position: absolute;
-            top: 20px;
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            gap: 15px;
+            position: relative;
+            z-index: 10;
         }
 
         .icono {
-            font-size: 2em;
+            position: absolute;
+            font-size: 2.5em;
             transition: transform 0.3s ease;
+            animation: flotar 5s infinite alternate ease-in-out;
         }
 
         .icono:hover {
             transform: scale(1.3);
+        }
+
+        @keyframes flotar {
+            from { transform: translateY(0); }
+            to { transform: translateY(-20px); }
         }
 
         .heart {
@@ -59,20 +59,23 @@
 </head>
 <body>
 
-    <div class="decoraciones">
-        <span class="icono">💪</span> <!-- Gimnasio -->
-        <span class="icono">🏋️</span> <!-- Pesas -->
-        <span class="icono">🥤</span> <!-- Batido de proteína -->
-        <span class="icono">🍓</span> <!-- Fresas -->
-        <span class="icono">🍰</span> <!-- Pastel de fresas -->
-        <span class="icono">🇩🇪</span> <!-- Bandera de Alemania -->
-        <span class="icono">🍺</span> <!-- Cerveza alemana -->
-        <span class="icono">🥨</span> <!-- Pretzel alemán -->
-    </div>
-
     <h1>Te Amo Claudia 💖</h1>
 
     <script>
+        const iconos = ["❤️", "💖", "💘", "💞", "💕", "💓", "💌", "💑", "💍", "🌹", "🇩🇪"];
+        
+        function crearIconos() {
+            for (let i = 0; i < 15; i++) { // Se generan 15 íconos
+                let icono = document.createElement("span");
+                icono.className = "icono";
+                icono.innerHTML = iconos[Math.floor(Math.random() * iconos.length)];
+                icono.style.left = Math.random() * 100 + "vw";
+                icono.style.top = Math.random() * 100 + "vh";
+                icono.style.animationDuration = (Math.random() * 2 + 3) + "s";
+                document.body.appendChild(icono);
+            }
+        }
+
         function createHeart() {
             const heart = document.createElement("div");
             heart.className = "heart";
@@ -86,6 +89,7 @@
             }, 5000);
         }
 
+        crearIconos();
         setInterval(createHeart, 500);
     </script>
 
