@@ -70,10 +70,15 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            font-size: 6em; /* MUCHÍSIMO más grande */
+            font-size: 6em; /* Texto enorme */
             text-align: center;
             max-width: 90%;
             z-index: 10; /* Para que los iconos no lo tapen */
+            line-height: 1.2;
+        }
+
+        #view7 h1 span {
+            display: block; /* Hace que "Claudia" esté debajo de "Te Amo" */
         }
 
         .icono {
@@ -155,7 +160,7 @@
     </div>
 
     <div id="view7" class="container hidden">
-        <h1>Te Amo Claudia 💖</h1>
+        <h1>Te Amo <br><span>Claudia 💖</span></h1>
 
         <!-- Íconos flotantes en la última vista -->
         <script>
