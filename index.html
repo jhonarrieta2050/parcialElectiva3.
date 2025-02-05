@@ -16,13 +16,14 @@
             flex-direction: column;
             text-align: center;
             overflow: hidden;
-            background-color: #ff7eb3; /* Fondo completamente rosa para todas las vistas */
+            background-color: #ff7eb3; /* Fondo completamente rosa */
         }
 
         h1 {
-            font-size: 3em;
+            font-size: 2.8em;
             text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
             margin: 20px;
+            white-space: nowrap; /* Mantiene el texto en una sola línea */
         }
 
         button {
@@ -53,21 +54,21 @@
             display: none;
         }
 
-        /* Efectos especiales solo en la última vista */
-        #view4 {
+        /* Última vista con efectos visuales */
+        #view7 {
             position: relative;
             overflow: hidden;
             height: 100vh;
             width: 100%;
         }
 
-        /* Centrar el texto de la última vista */
-        #view4 h1 {
+        #view7 h1 {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
             font-size: 3.5em;
+            white-space: nowrap; /* Evita saltos de línea */
         }
 
         .icono {
@@ -102,21 +103,36 @@
 <body>
 
     <div id="view1" class="container">
-        <h1>Hey, tú linda</h1>
+        <h1>Hola, tú hermosa</h1>
         <button onclick="nextView(2)">Presióname</button>
     </div>
 
     <div id="view2" class="container hidden">
-        <h1>¡Sí, tú! La hermosura que está leyendo esto</h1>
+        <h1>Sí, tú, la mujer increíble que está leyendo esto</h1>
         <button onclick="nextView(3)">Siguiente</button>
     </div>
 
     <div id="view3" class="container hidden">
-        <h1>Eres una gran mujer, una mujer hermosa y muy especial para mí, y por eso te quiero decir que...</h1>
-        <button onclick="nextView(4)">Te Amo</button>
+        <h1>Quiero recordarte algo... Eres única, valiosa y más especial de lo que imaginas</h1>
+        <button onclick="nextView(4)">Siguiente</button>
     </div>
 
     <div id="view4" class="container hidden">
+        <h1>Tu sonrisa ilumina mis días, y tu forma de ser hace mi mundo más bonito</h1>
+        <button onclick="nextView(5)">Siguiente</button>
+    </div>
+
+    <div id="view5" class="container hidden">
+        <h1>No hay palabras suficientes para decir lo mucho que significas para mí</h1>
+        <button onclick="nextView(6)">Siguiente</button>
+    </div>
+
+    <div id="view6" class="container hidden">
+        <h1>Por eso quiero decirte con todo mi corazón que...</h1>
+        <button onclick="nextView(7)">Ver mensaje final</button>
+    </div>
+
+    <div id="view7" class="container hidden">
         <h1>Te Amo Claudia 💖</h1>
 
         <!-- Íconos flotantes en la última vista -->
@@ -131,7 +147,7 @@
                     icono.style.left = Math.random() * 100 + "vw";
                     icono.style.top = Math.random() * 100 + "vh";
                     icono.style.animationDuration = (Math.random() * 2 + 3) + "s";
-                    document.getElementById("view4").appendChild(icono);
+                    document.getElementById("view7").appendChild(icono);
                 }
             }
 
@@ -141,7 +157,7 @@
                 heart.innerHTML = "❤️";
                 heart.style.left = Math.random() * 100 + "vw";
                 heart.style.animationDuration = Math.random() * 2 + 3 + "s";
-                document.getElementById("view4").appendChild(heart);
+                document.getElementById("view7").appendChild(heart);
 
                 setTimeout(() => {
                     heart.remove();
@@ -156,7 +172,7 @@
     <script>
         function nextView(viewNumber) {
             // Ocultamos todas las vistas
-            for (let i = 1; i <= 4; i++) {
+            for (let i = 1; i <= 7; i++) {
                 document.getElementById(`view${i}`).classList.add('hidden');
             }
             // Mostramos la vista correspondiente
